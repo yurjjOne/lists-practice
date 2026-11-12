@@ -99,6 +99,31 @@ def max_with_index(a):
     return m, k
 
 
+# 6. Перестановка
+def reverse_in_place(a):
+    """Розвернути список на місці двома вказівниками."""
+    i, j = 0, len(a) - 1
+    while i < j:
+        a[i], a[j] = a[j], a[i]
+        i += 1
+        j -= 1
+
+
+def shift_left(a):
+    """Циклічний зсув уліво на 1: [1, 2, 3, 4] -> [2, 3, 4, 1]."""
+    if len(a) == 0:
+        return
+    first = a[0]
+    for i in range(len(a) - 1):
+        a[i] = a[i + 1]
+    a[-1] = first
+
+
+def ranking(grades):
+    """Новий список балів від більшого до меншого (sorted, не sort)."""
+    return sorted(grades, reverse=True)
+
+
 if __name__ == "__main__":
     grades = [90, 75, 58, 88, 95, 61, 74]       # бали групи за модуль
     temps = [3, -2, 5, 8, 1, -4, 6]             # температури тижня
@@ -125,3 +150,9 @@ if __name__ == "__main__":
           "| перша мінусова температура:", first_below(temps, 0),
           "| індекси балів > 80:", indexes_greater(grades, 80),
           "| найтепліше (t, індекс дня):", max_with_index(temps))
+
+    c = temps.copy()
+    reverse_in_place(c)
+    d = [1, 2, 3, 4]
+    shift_left(d)
+    print("6. Перестановка:", c, d, "| рейтинг:", ranking(grades))
