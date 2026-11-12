@@ -14,6 +14,20 @@ def create_examples(n):
     return listed, zeros, squares
 
 
+# 2. Додавання
+def add_item(a, x, pos=None):
+    """Додати x у список a: у кінець (pos=None) або на позицію pos."""
+    if pos is None:
+        a.append(x)
+    else:
+        a.insert(pos, x)
+
+
+def add_many(a, items):
+    """Додати кілька елементів у кінець (extend, а не append)."""
+    a.extend(items)
+
+
 if __name__ == "__main__":
     grades = [90, 75, 58, 88, 95, 61, 74]       # бали групи за модуль
     temps = [3, -2, 5, 8, 1, -4, 6]             # температури тижня
@@ -21,3 +35,9 @@ if __name__ == "__main__":
     print("Температури:", temps)
 
     print("1. Створення:", create_examples(5))
+
+    a = grades.copy()
+    add_item(a, 100)
+    add_item(a, 50, 0)
+    add_many(a, [70, 80])
+    print("2. Додавання:", a)
