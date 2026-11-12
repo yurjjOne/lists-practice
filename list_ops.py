@@ -154,6 +154,33 @@ def summary(a):
     return sum(a), max(a), sum(a) / len(a)
 
 
+# 8. Матриці
+def make_matrix(rows, cols, value=0):
+    """Матриця rows x cols з незалежними рядками."""
+    return [[value] * cols for _ in range(rows)]
+
+
+def transpose(m):
+    """Транспонування: рядки стають стовпцями."""
+    return [[m[i][j] for i in range(len(m))] for j in range(len(m[0]))]
+
+
+def rotate_clockwise(m):
+    """Поворот матриці на 90° за годинниковою стрілкою."""
+    return [[m[len(m) - 1 - i][j] for i in range(len(m))]
+            for j in range(len(m[0]))]
+
+
+def row_sums(m):
+    """Суми рядків."""
+    return [sum(r) for r in m]
+
+
+def col_sums(m):
+    """Суми стовпців."""
+    return [sum(c) for c in zip(*m)]
+
+
 if __name__ == "__main__":
     grades = [90, 75, 58, 88, 95, 61, 74]       # бали групи за модуль
     temps = [3, -2, 5, 8, 1, -4, 6]             # температури тижня
@@ -189,3 +216,7 @@ if __name__ == "__main__":
 
     print("7. Перетворення:", to_ects(grades), c_to_f_list(temps[:3]),
           "| сума, макс, середнє балів:", summary(grades))
+
+    week = [[3, -2, 5], [8, 1, -4]]             # 2 тижні x 3 дні
+    print("8. Матриця:", make_matrix(2, 3), transpose(week), rotate_clockwise(week),
+          row_sums(week), col_sums(week))
