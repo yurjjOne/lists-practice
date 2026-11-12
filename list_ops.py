@@ -47,6 +47,27 @@ def read_list(k):
     return vals
 
 
+# 4. Вилучення
+def remove_value(a, x):
+    """Видалити перше входження x; True, якщо було що видаляти."""
+    if x in a:
+        a.remove(x)
+        return True
+    return False
+
+
+def pop_last(a):
+    """Забрати останній елемент; для порожнього списку — None."""
+    if len(a) == 0:
+        return None
+    return a.pop()
+
+
+def only_passed(grades, limit=60):
+    """Новий список лише з балами >= limit (вихідний не змінюється)."""
+    return [g for g in grades if g >= limit]
+
+
 if __name__ == "__main__":
     grades = [90, 75, 58, 88, 95, 61, 74]       # бали групи за модуль
     temps = [3, -2, 5, 8, 1, -4, 6]             # температури тижня
@@ -62,3 +83,9 @@ if __name__ == "__main__":
     print("2. Додавання:", a)
 
     print("3. Заповнення:", fill_same(4, 60), fill_squares(6))
+
+    b = grades.copy()
+    removed = remove_value(b, 58)
+    print("4. Вилучення: remove 58 ->", removed, b)
+    last = pop_last(b)
+    print("   pop ->", last, b, "| лише ≥ 60:", only_passed(grades))
