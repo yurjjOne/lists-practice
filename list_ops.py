@@ -28,6 +28,25 @@ def add_many(a, items):
     a.extend(items)
 
 
+# 3. Заповнення
+def fill_same(n, value):
+    """Список з n однакових значень."""
+    return [value] * n
+
+
+def fill_squares(n):
+    """Квадрати чисел 0..n-1."""
+    return [i * i for i in range(n)]
+
+
+def read_list(k):
+    """Прочитати k цілих чисел з клавіатури (через append)."""
+    vals = []
+    for _ in range(k):
+        vals.append(int(input("Число: ")))
+    return vals
+
+
 if __name__ == "__main__":
     grades = [90, 75, 58, 88, 95, 61, 74]       # бали групи за модуль
     temps = [3, -2, 5, 8, 1, -4, 6]             # температури тижня
@@ -41,3 +60,5 @@ if __name__ == "__main__":
     add_item(a, 50, 0)
     add_many(a, [70, 80])
     print("2. Додавання:", a)
+
+    print("3. Заповнення:", fill_same(4, 60), fill_squares(6))
