@@ -8,3 +8,5 @@
 ## Файли
 
 - `list_ops.py` — функції операцій і демонстрація (`python3 list_ops.py`)
+- `test_list_ops.py` — тести (`python3 test_list_ops.py`)
+- `pitfalls.py` — п'ять пасток зі списками на коді
