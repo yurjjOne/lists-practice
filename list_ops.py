@@ -124,6 +124,36 @@ def ranking(grades):
     return sorted(grades, reverse=True)
 
 
+# 7. Перетворення
+def to_ects(grades):
+    """Бали 0..100 -> оцінки ECTS (A ≥ 90, B ≥ 82, C ≥ 74, D ≥ 64, E ≥ 60, F)."""
+    result = []
+    for g in grades:
+        if g >= 90:
+            result.append("A")
+        elif g >= 82:
+            result.append("B")
+        elif g >= 74:
+            result.append("C")
+        elif g >= 64:
+            result.append("D")
+        elif g >= 60:
+            result.append("E")
+        else:
+            result.append("F")
+    return result
+
+
+def c_to_f_list(temps):
+    """Температури Цельсія -> Фаренгейта (новий список)."""
+    return [t * 9 / 5 + 32 for t in temps]
+
+
+def summary(a):
+    """Сума, максимум і середнє списку."""
+    return sum(a), max(a), sum(a) / len(a)
+
+
 if __name__ == "__main__":
     grades = [90, 75, 58, 88, 95, 61, 74]       # бали групи за модуль
     temps = [3, -2, 5, 8, 1, -4, 6]             # температури тижня
@@ -156,3 +186,6 @@ if __name__ == "__main__":
     d = [1, 2, 3, 4]
     shift_left(d)
     print("6. Перестановка:", c, d, "| рейтинг:", ranking(grades))
+
+    print("7. Перетворення:", to_ects(grades), c_to_f_list(temps[:3]),
+          "| сума, макс, середнє балів:", summary(grades))
