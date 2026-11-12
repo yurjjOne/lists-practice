@@ -68,6 +68,37 @@ def only_passed(grades, limit=60):
     return [g for g in grades if g >= limit]
 
 
+# 5. Пошук із заданою властивістю
+def find_index(a, x):
+    """Індекс першого x або -1."""
+    for i in range(len(a)):
+        if a[i] == x:
+            return i
+    return -1
+
+
+def first_below(a, t):
+    """Перше значення, менше за t, або None."""
+    for x in a:
+        if x < t:
+            return x
+    return None
+
+
+def indexes_greater(a, t):
+    """Індекси всіх елементів, більших за t."""
+    return [i for i in range(len(a)) if a[i] > t]
+
+
+def max_with_index(a):
+    """Пара (максимум, його індекс)."""
+    m, k = a[0], 0
+    for i in range(1, len(a)):
+        if a[i] > m:
+            m, k = a[i], i
+    return m, k
+
+
 if __name__ == "__main__":
     grades = [90, 75, 58, 88, 95, 61, 74]       # бали групи за модуль
     temps = [3, -2, 5, 8, 1, -4, 6]             # температури тижня
@@ -89,3 +120,8 @@ if __name__ == "__main__":
     print("4. Вилучення: remove 58 ->", removed, b)
     last = pop_last(b)
     print("   pop ->", last, b, "| лише ≥ 60:", only_passed(grades))
+
+    print("5. Пошук: індекс 88 =", find_index(grades, 88),
+          "| перша мінусова температура:", first_below(temps, 0),
+          "| індекси балів > 80:", indexes_greater(grades, 80),
+          "| найтепліше (t, індекс дня):", max_with_index(temps))
